@@ -59,7 +59,8 @@ public class AddInfo extends AppCompatActivity {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             String userId = auth.getUid();
 
-            StorageReference ref = FirebaseStorage.getInstance().getReference().child(userId);
+            String fileName = System.currentTimeMillis()+""; // unique file name
+            StorageReference ref = FirebaseStorage.getInstance().getReference().child(userId).child(fileName);
 
             ref.putFile(photoUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
